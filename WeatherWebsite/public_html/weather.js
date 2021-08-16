@@ -11,15 +11,17 @@ const url = "https://api.openweathermap.org/data/2.5/weather?q=Ankeny&appid=a148
 $.ajax ({
     url: url, 
     success: function (result){
-        console.log(result);
-        console.log(result.name);
+        //console.log(result);
+        //console.log(result.name);
         
         $("#location").text(result.name);
         
         $("#sky").text(result.weather[0].description);
 
         let F = Math.round(result.main.temp * (9/5) - 459.67);
+        let F2 = Math.round(result.main.feels_like * (9/5) - 459.67);
         $("#temperature").text(F);
+        $("#feelsLike").text(F2);
         let windSpeed = Math.round(result.wind.speed / .44704);
 
         $("#wind").text(windSpeed);
